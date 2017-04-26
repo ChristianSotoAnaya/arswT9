@@ -34,17 +34,14 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/topic");
-        config.setApplicationDestinationPrefixes("/app");
-        //config.setPathMatcher(new AntPathMatcher("."));
-        
+        config.enableStompBrokerRelay("/topic/").setRelayHost("192.168.56.103").setRelayPort(8161);
+        config.setApplicationDestinationPrefixes("/app");        
         
     }
 
     @Override
-    public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/stompendpoint").withSockJS();
-        
+	public void registerStompEndpoints(StompEndpointRegistry registry) {
+    	registry.addEndpoint("/stompendpoint").setAllowedOrigins("*").withSockJS();        
     }
     
 

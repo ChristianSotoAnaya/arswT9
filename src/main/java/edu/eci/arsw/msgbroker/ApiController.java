@@ -61,7 +61,6 @@ public class ApiController {
     @RequestMapping(path = "/{iddibujo}", method = RequestMethod.PUT)
     public ResponseEntity<?> manejadorPutRecursoOrdenes(@PathVariable int iddibujo, @RequestBody String nombre) {
         try{
-            System.out.println("hooooooola"+nombre+iddibujo);
             if (lista.containsKey(iddibujo)) {
                 ArrayList<String> temp = lista.get(iddibujo);
                 temp.add(nombre);
